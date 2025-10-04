@@ -4,8 +4,8 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3f92d013-e77f-49a3-8df2-dded40157172" name="変更" comment="Add VoiceRecognitionUtil.kt - 音声認識ユーティリティ実装">
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/akira/carrycheck/util/TextToSpeechUtil.kt" afterDir="false" />
+    <list default="true" id="3f92d013-e77f-49a3-8df2-dded40157172" name="変更" comment="Add TextToSpeechUtil.kt - 音声読み上げユーティリティ実装">
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/akira/carrycheck/presentation/navigation/AppNavGraph.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -329,7 +329,15 @@
       <option name="project" value="LOCAL" />
       <updated>1759557533217</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="Add TextToSpeechUtil.kt - 音声読み上げユーティリティ実装">
+      <option name="closed" value="true" />
+      <created>1759557851415</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1759557851415</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -357,7 +365,8 @@
     <MESSAGE value="Add VoiceSettingRepository.kt - 音声設定リポジトリ実装" />
     <MESSAGE value="Add Constants.kt - アプリ全体定数定義実装" />
     <MESSAGE value="Add VoiceRecognitionUtil.kt - 音声認識ユーティリティ実装" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add VoiceRecognitionUtil.kt - 音声認識ユーティリティ実装" />
+    <MESSAGE value="Add TextToSpeechUtil.kt - 音声読み上げユーティリティ実装" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add TextToSpeechUtil.kt - 音声読み上げユーティリティ実装" />
   </component>
   <component name="play_dynamic_filters_status">
     <option name="appIdToCheckInfo">
