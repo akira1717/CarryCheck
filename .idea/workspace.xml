@@ -4,8 +4,9 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3f92d013-e77f-49a3-8df2-dded40157172" name="変更" comment="Add VoiceSettingEntity.kt - 音声設定Roomエンティティ実装">
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/akira/carrycheck/data/dao/ChecklistItemDao.kt" afterDir="false" />
+    <list default="true" id="3f92d013-e77f-49a3-8df2-dded40157172" name="変更" comment="Add ChecklistItemDao.kt - チェックリストアイテムDAO実装">
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/akira/carrycheck/data/dao/VoiceSettingDao.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -261,7 +262,15 @@
       <option name="project" value="LOCAL" />
       <updated>1759552735290</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Add ChecklistItemDao.kt - チェックリストアイテムDAO実装">
+      <option name="closed" value="true" />
+      <created>1759553016431</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1759553016431</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -281,7 +290,8 @@
     <MESSAGE value="「Add ChecklistItem.kt - チェックリストアイテムデータモデル実装" />
     <MESSAGE value="Add VoiceSetting.kt - 音声設定データモデル実装" />
     <MESSAGE value="Add VoiceSettingEntity.kt - 音声設定Roomエンティティ実装" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add VoiceSettingEntity.kt - 音声設定Roomエンティティ実装" />
+    <MESSAGE value="Add ChecklistItemDao.kt - チェックリストアイテムDAO実装" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add ChecklistItemDao.kt - チェックリストアイテムDAO実装" />
   </component>
   <component name="play_dynamic_filters_status">
     <option name="appIdToCheckInfo">
