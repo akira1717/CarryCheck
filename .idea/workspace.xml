@@ -4,14 +4,14 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3f92d013-e77f-49a3-8df2-dded40157172" name="変更" comment="&quot;Phase2 UI層実装 - Navigation, MainScreen, Components, EmergencyMode完了&quot;">
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/akira/carrycheck/data/database/ChecklistItemDao.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/akira/carrycheck/data/database/ChecklistItemEntity.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/akira/carrycheck/data/database/VoiceSettingDao.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/akira/carrycheck/data/database/VoiceSettingEntity.kt" afterDir="false" />
+    <list default="true" id="3f92d013-e77f-49a3-8df2-dded40157172" name="変更" comment="git commit -m &quot;Phase2 データモデル拡張完了 - isImportant追加、Entity・DAO・Database更新、マイグレーション対応&quot;">
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/akira/carrycheck/presentation/screen/customization/CustomizationScreen.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/akira/carrycheck/presentation/screen/customization/CustomizationViewModel.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/akira/carrycheck/presentation/screen/history/HistoryListScreen.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/akira/carrycheck/presentation/screen/history/HistoryViewModel.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/akira/carrycheck/presentation/screen/voice/VoiceSettingScreen.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/akira/carrycheck/presentation/screen/voice/VoiceSettingViewModel.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/akira/carrycheck/data/database/AppDatabase.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/akira/carrycheck/data/database/AppDatabase.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/akira/carrycheck/data/model/VoiceSetting.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/akira/carrycheck/data/model/VoiceSetting.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -358,7 +358,15 @@
       <option name="project" value="LOCAL" />
       <updated>1759561471941</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="git commit -m &quot;Phase2 データモデル拡張完了 - isImportant追加、Entity・DAO・Database更新、マイグレーション対応&quot;">
+      <option name="closed" value="true" />
+      <created>1759562457962</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1759562457962</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -388,7 +396,8 @@
     <MESSAGE value="Add VoiceRecognitionUtil.kt - 音声認識ユーティリティ実装" />
     <MESSAGE value="Add TextToSpeechUtil.kt - 音声読み上げユーティリティ実装" />
     <MESSAGE value="&quot;Phase2 UI層実装 - Navigation, MainScreen, Components, EmergencyMode完了&quot;" />
-    <option name="LAST_COMMIT_MESSAGE" value="&quot;Phase2 UI層実装 - Navigation, MainScreen, Components, EmergencyMode完了&quot;" />
+    <MESSAGE value="git commit -m &quot;Phase2 データモデル拡張完了 - isImportant追加、Entity・DAO・Database更新、マイグレーション対応&quot;" />
+    <option name="LAST_COMMIT_MESSAGE" value="git commit -m &quot;Phase2 データモデル拡張完了 - isImportant追加、Entity・DAO・Database更新、マイグレーション対応&quot;" />
   </component>
   <component name="play_dynamic_filters_status">
     <option name="appIdToCheckInfo">
