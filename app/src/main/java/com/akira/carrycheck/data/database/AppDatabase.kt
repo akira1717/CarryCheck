@@ -3,70 +3,99 @@ package com.akira.carrycheck.data.database
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import androidx.room.migration.Migration
+import androidx.sqlite.db.SupportSQLiteDatabase
 import android.content.Context
-import com.akira.carrycheck.data.dao.ChecklistItemDao
-import com.akira.carrycheck.data.dao.VoiceSettingDao
-import com.akira.carrycheck.data.entity.ChecklistItemEntity
-import com.akira.carrycheck.data.entity.VoiceSettingEntity
 
 /**
- * CarryCheckアプリのRoomデータベース
- * バージョン1: 初期実装
- * - checklist_items テーブル
- * - voice_settings テーブル
+ * CarryCheck v3.0 メインデータベース
+ * Phase2拡張: isImportantカラム追加、音声設定テーブル追加
  */
 @Database(
     entities = [
         ChecklistItemEntity::class,
         VoiceSettingEntity::class
     ],
-    version = 1,
+    version = 2, // Phase2でバージョンアップ
     exportSchema = false
 )
 abstract class AppDatabase : RoomDatabase() {
 
-    /**
-     * チェックリストアイテムDAO取得
-     */
     abstract fun checklistItemDao(): ChecklistItemDao
-
-    /**
-     * 音声設定DAO取得
-     */
     abstract fun voiceSettingDao(): VoiceSettingDao
 
     companion object {
-        /**
-         * データベース名
-         */
-        private const val DATABASE_NAME = "carrycheck_database"
-
-        /**
-         * シングルトンインスタンス
-         */
         @Volatile
         private var INSTANCE: AppDatabase? = null
 
-        /**
-         * データベースインスタンス取得
-         * シングルトンパターンでスレッドセーフに実装
-         */
+        private const val DATABASE_NAME = "carry_check_database"
+
         fun getDatabase(context: Context): AppDatabase {
             return INSTANCE ?: synchronized(this) {
                 val instance = Room.databaseBuilder(
                     context.applicationContext,
                     AppDatabase::class.java,
                     DATABASE_NAME
-                ).build()
+                )
+                    .addMigrations(MIGRATION_1_2) // マイグレーション追加
+                    .build()
                 INSTANCE = instance
                 instance
             }
         }
 
         /**
-         * テスト用：データベースインスタンス破棄
+         * データベースマイグレーション v1 -> v2
+         * - checklist_itemsテーブルにisImportantカラム追加
+         * - voice_settingsテーブル新規作成
          */
-        fun destroyInstance() {
+        private val MIGRATION_1_2 = object : Migration(1, 2) {
+            override fun migrate(database: SupportSQLiteDatabase) {
+                // 1. checklist_itemsテーブルにisImportantカラム追加
+                database.execSQL(
+                    "ALTER TABLE checklist_items ADD COLUMN isImportant INTEGER NOT NULL DEFAULT 0"
+                )
+
+                // 2. voice_settingsテーブル作成
+                database.execSQL("""
+                    CREATE TABLE voice_settings (
+                        id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
+                        recognitionSensitivity REAL NOT NULL DEFAULT 0.7,
+                        speechRate REAL NOT NULL DEFAULT 1.0,
+                        speechPitch REAL NOT NULL DEFAULT 1.0,
+                        language TEXT NOT NULL DEFAULT 'ja-JP',
+                        isVoiceFeedbackEnabled INTEGER NOT NULL DEFAULT 1,
+                        timeoutDuration INTEGER NOT NULL DEFAULT 5000,
+                        practiceMode INTEGER NOT NULL DEFAULT 0,
+                        emergencyModeEnabled INTEGER NOT NULL DEFAULT 1
+                    )
+                """)
+
+                // 3. デフォルト音声設定挿入
+                database.execSQL("""
+                    INSERT INTO voice_settings (
+                        recognitionSensitivity, speechRate, speechPitch, language,
+                        isVoiceFeedbackEnabled, timeoutDuration, practiceMode, emergencyModeEnabled
+                    ) VALUES (0.7, 1.0, 1.0, 'ja-JP', 1, 5000, 0, 1)
+                """)
+            }
+        }
+
+        /**
+         * データベース初期化（開発・テスト用）
+         */
+        fun recreateDatabase(context: Context): AppDatabase {
+            INSTANCE?.close()
+            context.deleteDatabase(DATABASE_NAME)
+            INSTANCE = null
+            return getDatabase(context)
+        }
+
+        /**
+         * データベースクローズ
+         */
+        fun closeDatabase() {
+            INSTANCE?.close()
             INSTANCE = null
         }
     }
