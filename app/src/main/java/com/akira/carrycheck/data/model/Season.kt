@@ -1,4 +1,4 @@
-package data.model
+package com.akira.carrycheck.data.model
 
 /**
  * 季節を表すEnum
