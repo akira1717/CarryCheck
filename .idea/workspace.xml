@@ -4,9 +4,9 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3f92d013-e77f-49a3-8df2-dded40157172" name="変更" comment="Add AppDatabase.kt - Roomデータベース定義実装">
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/akira/carrycheck/data/repository/ItemRepository.kt" afterDir="false" />
+    <list default="true" id="3f92d013-e77f-49a3-8df2-dded40157172" name="変更" comment="Add ItemRepository.kt - チェックリストアイテムリポジトリ実装">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/akira/carrycheck/data/repository/ItemRepository.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/akira/carrycheck/data/repository/ItemRepository.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -64,6 +64,9 @@
     &quot;accountId&quot;: &quot;41415390-4a26-41e0-939c-5f00bc872134&quot;
   }
 }</component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 0
 }</component>
@@ -286,7 +289,15 @@
       <option name="project" value="LOCAL" />
       <updated>1759554011913</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="Add ItemRepository.kt - チェックリストアイテムリポジトリ実装">
+      <option name="closed" value="true" />
+      <created>1759554471696</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1759554471696</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -309,7 +320,8 @@
     <MESSAGE value="Add ChecklistItemDao.kt - チェックリストアイテムDAO実装" />
     <MESSAGE value="Add VoiceSettingDao.kt - 音声設定DAO実装" />
     <MESSAGE value="Add AppDatabase.kt - Roomデータベース定義実装" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add AppDatabase.kt - Roomデータベース定義実装" />
+    <MESSAGE value="Add ItemRepository.kt - チェックリストアイテムリポジトリ実装" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add ItemRepository.kt - チェックリストアイテムリポジトリ実装" />
   </component>
   <component name="play_dynamic_filters_status">
     <option name="appIdToCheckInfo">

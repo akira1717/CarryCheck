@@ -6,15 +6,12 @@ import com.akira.carrycheck.data.model.ChecklistItem
 import com.akira.carrycheck.data.model.Season
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
-import javax.inject.Inject
-import javax.inject.Singleton
 
 /**
  * チェックリストアイテムのリポジトリ
  * データモデルとエンティティの変換、ビジネスロジックを担当
  */
-@Singleton
-class ItemRepository @Inject constructor(
+class ItemRepository(
     private val checklistItemDao: ChecklistItemDao
 ) {
 
