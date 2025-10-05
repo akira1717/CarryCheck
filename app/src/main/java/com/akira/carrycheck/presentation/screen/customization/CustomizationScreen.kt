@@ -4,12 +4,11 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.selection.selectable
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.ArrowDropDown
+import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
@@ -33,7 +32,7 @@ fun CustomizationScreen(
                 title = { Text("カスタマイズ") },
                 navigationIcon = {
                     IconButton(onClick = onNavigateBack) {
-                        Text("←")
+                        Icon(Icons.Default.ArrowBack, contentDescription = "戻る")
                     }
                 }
             )
@@ -45,18 +44,18 @@ fun CustomizationScreen(
                 .padding(paddingValues),
             verticalArrangement = Arrangement.spacedBy(8.dp)
         ) {
-            // 背景カスタマイズ（Season選択は一時的に固定値使用）
+            // 背景カスタマイズ
             item {
                 BackgroundCustomizationSection(
-                    selectedSeason = Season.SPRING, // 一時的に固定値
-                    onSeasonChanged = { /* TODO: Season更新機能を実装 */ }
+                    selectedSeason = uiState.backgroundSeason, // 正しいプロパティ名
+                    onSeasonChanged = viewModel::updateBackgroundSeason // 正しい関数名
                 )
             }
 
             // テーマカスタマイズ
             item {
                 ThemeCustomizationSection(
-                    isDarkMode = uiState.isDarkMode,
+                    isDarkMode = uiState.isDarkTheme, // 正しいプロパティ名
                     onThemeChanged = viewModel::updateDarkMode // 正しい関数名
                 )
             }
@@ -64,7 +63,7 @@ fun CustomizationScreen(
             // 言語カスタマイズ
             item {
                 LanguageCustomizationSection(
-                    selectedLanguage = uiState.selectedLanguage,
+                    selectedLanguage = uiState.language, // 正しいプロパティ名
                     onLanguageChanged = viewModel::updateLanguage // 正しい関数名
                 )
             }
@@ -72,7 +71,7 @@ fun CustomizationScreen(
             // フォントサイズカスタマイズ
             item {
                 FontSizeCustomizationSection(
-                    fontSize = uiState.fontSize,
+                    fontSize = uiState.fontScale, // 正しいプロパティ名
                     onFontSizeChanged = viewModel::updateFontSize // 正しい関数名
                 )
             }
@@ -80,8 +79,8 @@ fun CustomizationScreen(
             // キャラクターカスタマイズ
             item {
                 CharacterCustomizationSection(
-                    showCharacter = uiState.showCharacter,
-                    characterVariation = uiState.characterVariation,
+                    showCharacter = uiState.showCharacter, // 正しいプロパティ名
+                    characterVariation = uiState.characterVariation, // 正しいプロパティ名
                     onShowCharacterChanged = viewModel::updateShowCharacter, // 正しい関数名
                     onCharacterVariationChanged = viewModel::updateCharacterVariation // 正しい関数名
                 )
@@ -90,9 +89,9 @@ fun CustomizationScreen(
             // アクセシビリティ設定
             item {
                 AccessibilityCustomizationSection(
-                    highContrast = uiState.highContrast,
-                    largeText = uiState.largeText,
-                    voiceGuidance = uiState.voiceGuidance,
+                    highContrast = uiState.isHighContrast, // 正しいプロパティ名
+                    largeText = uiState.isLargeText, // 正しいプロパティ名
+                    voiceGuidance = uiState.isVoiceGuidanceEnabled, // 正しいプロパティ名
                     onHighContrastChanged = viewModel::updateHighContrast, // 正しい関数名
                     onLargeTextChanged = viewModel::updateLargeText, // 正しい関数名
                     onVoiceGuidanceChanged = viewModel::updateVoiceGuidance // 正しい関数名
