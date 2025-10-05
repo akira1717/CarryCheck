@@ -192,6 +192,7 @@ fun ChecklistItemCardPreview() {
     val sampleItem = ChecklistItem(
         id = 1,
         name = "財布",
+        category = "日常用品", // categoryパラメータを追加
         isChecked = false,
         season = Season.SPRING,
         createdAt = System.currentTimeMillis()
@@ -203,3 +204,4 @@ fun ChecklistItemCardPreview() {
         onDeleteItem = { }
     )
 }
+
