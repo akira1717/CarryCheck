@@ -4,12 +4,11 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.selection.selectable
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.ArrowBack
+import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
@@ -24,7 +23,11 @@ enum class LanguageOption {
     ENGLISH_UK,
     KOREAN,
     CHINESE_SIMPLIFIED,
-    CHINESE_TRADITIONAL
+    CHINESE_TRADITIONAL;
+
+    companion object {
+        fun getAllOptions(): Array<LanguageOption> = entries.toTypedArray()
+    }
 }
 
 /**
@@ -45,7 +48,10 @@ fun CustomizationScreen(
                 title = { Text("カスタマイズ") },
                 navigationIcon = {
                     IconButton(onClick = onNavigateBack) {
-                        Icon(Icons.Default.ArrowBack, contentDescription = "戻る")
+                        Icon(
+                            Icons.AutoMirrored.Filled.ArrowBack,
+                            contentDescription = "戻る"
+                        )
                     }
                 }
             )
@@ -123,8 +129,7 @@ private fun BackgroundCustomizationSection(
                 modifier = Modifier.padding(bottom = 16.dp)
             )
 
-            val seasons = Season.values()
-            seasons.forEach { season ->
+            Season.entries.forEach { season ->
                 Row(
                     modifier = Modifier
                         .fillMaxWidth()
@@ -217,7 +222,7 @@ private fun LanguageCustomizationSection(
                 modifier = Modifier.padding(bottom = 16.dp)
             )
 
-            LanguageOption.values().forEach { languageOption ->
+            LanguageOption.entries.forEach { languageOption ->
                 Row(
                     modifier = Modifier
                         .fillMaxWidth()
@@ -275,7 +280,7 @@ private fun FontSizeCustomizationSection(
 
             Text(
                 text = "サンプルテキスト",
-                fontSize = (14 * fontSize).sp, // sp エラーを修正
+                fontSize = (14 * fontSize).sp,
                 modifier = Modifier.padding(bottom = 16.dp)
             )
 

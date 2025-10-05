@@ -31,7 +31,7 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3f92d013-e77f-49a3-8df2-dded40157172" name="変更" comment="CustomizationScreen.kt ViewModelに実際に存在するプロパティと関数のみ">
+    <list default="true" id="3f92d013-e77f-49a3-8df2-dded40157172" name="変更" comment="最終クリーンアップ版CustomizationScreen.kt 未使用パラメータを削除し、spエラーを修正">
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/akira/carrycheck/presentation/screen/customization/CustomizationScreen.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/akira/carrycheck/presentation/screen/customization/CustomizationScreen.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -670,7 +670,15 @@
       <option name="project" value="LOCAL" />
       <updated>1759691665781</updated>
     </task>
-    <option name="localTasksCounter" value="47" />
+    <task id="LOCAL-00047" summary="最終クリーンアップ版CustomizationScreen.kt 未使用パラメータを削除し、spエラーを修正">
+      <option name="closed" value="true" />
+      <created>1759691851703</created>
+      <option name="number" value="00047" />
+      <option name="presentableId" value="LOCAL-00047" />
+      <option name="project" value="LOCAL" />
+      <updated>1759691851703</updated>
+    </task>
+    <option name="localTasksCounter" value="48" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -685,7 +693,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Add VoiceRecognitionUtil.kt - 音声認識ユーティリティ実装" />
     <MESSAGE value="Add TextToSpeechUtil.kt - 音声読み上げユーティリティ実装" />
     <MESSAGE value="&quot;Phase2 UI層実装 - Navigation, MainScreen, Components, EmergencyMode完了&quot;" />
     <MESSAGE value="git commit -m &quot;Phase2 データモデル拡張完了 - isImportant追加、Entity・DAO・Database更新、マイグレーション対応&quot;" />
@@ -710,7 +717,8 @@
     <MESSAGE value="CustomizationScreen.kt ViewModelの実際の定義" />
     <MESSAGE value="CustomizationViewModelの実際のUIState" />
     <MESSAGE value="CustomizationScreen.kt ViewModelに実際に存在するプロパティと関数のみ" />
-    <option name="LAST_COMMIT_MESSAGE" value="CustomizationScreen.kt ViewModelに実際に存在するプロパティと関数のみ" />
+    <MESSAGE value="最終クリーンアップ版CustomizationScreen.kt 未使用パラメータを削除し、spエラーを修正" />
+    <option name="LAST_COMMIT_MESSAGE" value="最終クリーンアップ版CustomizationScreen.kt 未使用パラメータを削除し、spエラーを修正" />
   </component>
   <component name="play_dynamic_filters_status">
     <option name="appIdToCheckInfo">
