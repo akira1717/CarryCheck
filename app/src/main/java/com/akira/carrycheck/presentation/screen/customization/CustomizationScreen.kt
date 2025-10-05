@@ -11,6 +11,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.akira.carrycheck.data.model.Season
 
@@ -59,24 +60,21 @@ fun CustomizationScreen(
             // 背景カスタマイズ
             item {
                 BackgroundCustomizationSection(
-                    selectedSeason = uiState.selectedSeason,
-                    onSeasonChanged = { /* TODO: ViewModelに関数を追加予定 */ }
+                    selectedSeason = uiState.selectedSeason
                 )
             }
 
             // テーマカスタマイズ
             item {
                 ThemeCustomizationSection(
-                    isDarkMode = uiState.isDarkMode,
-                    onThemeChanged = { /* TODO: ViewModelに関数を追加予定 */ }
+                    isDarkMode = uiState.isDarkMode
                 )
             }
 
             // 言語カスタマイズ
             item {
                 LanguageCustomizationSection(
-                    selectedLanguage = uiState.selectedLanguage,
-                    onLanguageChanged = { /* TODO: ViewModelに関数を追加予定 */ }
+                    selectedLanguage = uiState.selectedLanguage
                 )
             }
 
@@ -91,21 +89,13 @@ fun CustomizationScreen(
             // キャラクターカスタマイズ
             item {
                 CharacterCustomizationSection(
-                    showCharacter = uiState.showCharacter,
-                    onShowCharacterChanged = { /* TODO: ViewModelに関数を追加予定 */ }
+                    showCharacter = uiState.showCharacter
                 )
             }
 
-            // アクセシビリティ設定（一時的に固定値使用）
+            // アクセシビリティ設定
             item {
-                AccessibilityCustomizationSection(
-                    highContrast = false, // 一時的に固定値
-                    largeText = false, // 一時的に固定値
-                    voiceGuidance = false, // 一時的に固定値
-                    onHighContrastChanged = { /* TODO: ViewModelに実装予定 */ },
-                    onLargeTextChanged = { /* TODO: ViewModelに実装予定 */ },
-                    onVoiceGuidanceChanged = { /* TODO: ViewModelに実装予定 */ }
-                )
+                AccessibilityCustomizationSection()
             }
         }
     }
@@ -116,8 +106,7 @@ fun CustomizationScreen(
  */
 @Composable
 private fun BackgroundCustomizationSection(
-    selectedSeason: Season,
-    onSeasonChanged: (Season) -> Unit
+    selectedSeason: Season
 ) {
     Card(
         modifier = Modifier
@@ -141,14 +130,14 @@ private fun BackgroundCustomizationSection(
                         .fillMaxWidth()
                         .selectable(
                             selected = selectedSeason == season,
-                            onClick = { onSeasonChanged(season) }
+                            onClick = { /* TODO: 実装予定 */ }
                         )
                         .padding(vertical = 4.dp),
                     verticalAlignment = Alignment.CenterVertically
                 ) {
                     RadioButton(
                         selected = selectedSeason == season,
-                        onClick = { onSeasonChanged(season) }
+                        onClick = { /* TODO: 実装予定 */ }
                     )
                     Spacer(modifier = Modifier.width(8.dp))
                     Text(
@@ -171,8 +160,7 @@ private fun BackgroundCustomizationSection(
  */
 @Composable
 private fun ThemeCustomizationSection(
-    isDarkMode: Boolean,
-    onThemeChanged: (Boolean) -> Unit
+    isDarkMode: Boolean
 ) {
     Card(
         modifier = Modifier
@@ -200,7 +188,7 @@ private fun ThemeCustomizationSection(
                 )
                 Switch(
                     checked = isDarkMode,
-                    onCheckedChange = onThemeChanged
+                    onCheckedChange = { /* TODO: 実装予定 */ }
                 )
             }
         }
@@ -212,8 +200,7 @@ private fun ThemeCustomizationSection(
  */
 @Composable
 private fun LanguageCustomizationSection(
-    selectedLanguage: LanguageOption,
-    onLanguageChanged: (LanguageOption) -> Unit
+    selectedLanguage: LanguageOption
 ) {
     Card(
         modifier = Modifier
@@ -236,14 +223,14 @@ private fun LanguageCustomizationSection(
                         .fillMaxWidth()
                         .selectable(
                             selected = selectedLanguage == languageOption,
-                            onClick = { onLanguageChanged(languageOption) }
+                            onClick = { /* TODO: 実装予定 */ }
                         )
                         .padding(vertical = 4.dp),
                     verticalAlignment = Alignment.CenterVertically
                 ) {
                     RadioButton(
                         selected = selectedLanguage == languageOption,
-                        onClick = { onLanguageChanged(languageOption) }
+                        onClick = { /* TODO: 実装予定 */ }
                     )
                     Spacer(modifier = Modifier.width(8.dp))
                     Text(
@@ -288,7 +275,7 @@ private fun FontSizeCustomizationSection(
 
             Text(
                 text = "サンプルテキスト",
-                fontSize = androidx.compose.ui.unit.sp * fontSize,
+                fontSize = (14 * fontSize).sp, // sp エラーを修正
                 modifier = Modifier.padding(bottom = 16.dp)
             )
 
@@ -321,8 +308,7 @@ private fun FontSizeCustomizationSection(
  */
 @Composable
 private fun CharacterCustomizationSection(
-    showCharacter: Boolean,
-    onShowCharacterChanged: (Boolean) -> Unit
+    showCharacter: Boolean
 ) {
     Card(
         modifier = Modifier
@@ -350,7 +336,7 @@ private fun CharacterCustomizationSection(
                 )
                 Switch(
                     checked = showCharacter,
-                    onCheckedChange = onShowCharacterChanged
+                    onCheckedChange = { /* TODO: 実装予定 */ }
                 )
             }
         }
@@ -361,14 +347,7 @@ private fun CharacterCustomizationSection(
  * アクセシビリティカスタマイズセクション
  */
 @Composable
-private fun AccessibilityCustomizationSection(
-    highContrast: Boolean,
-    largeText: Boolean,
-    voiceGuidance: Boolean,
-    onHighContrastChanged: (Boolean) -> Unit,
-    onLargeTextChanged: (Boolean) -> Unit,
-    onVoiceGuidanceChanged: (Boolean) -> Unit
-) {
+private fun AccessibilityCustomizationSection() {
     Card(
         modifier = Modifier
             .fillMaxWidth()
