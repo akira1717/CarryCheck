@@ -15,6 +15,18 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import com.akira.carrycheck.data.model.Season
 
 /**
+ * 言語オプション列挙型（ViewModelに合わせて定義）
+ */
+enum class LanguageOption {
+    JAPANESE,
+    ENGLISH_US,
+    ENGLISH_UK,
+    KOREAN,
+    CHINESE_SIMPLIFIED,
+    CHINESE_TRADITIONAL
+}
+
+/**
  * カスタマイズ画面
  * v3.0: 背景・言語・文字サイズ・テーマ・アクセシビリティ設定
  */
@@ -47,58 +59,52 @@ fun CustomizationScreen(
             // 背景カスタマイズ
             item {
                 BackgroundCustomizationSection(
-                    selectedSeason = uiState.selectedSeason, // 実際のプロパティ名
-                    onSeasonChanged = { season ->
-                        // 一時的に無効化（関数が存在しない）
-                    }
+                    selectedSeason = uiState.selectedSeason,
+                    onSeasonChanged = { /* TODO: 実装予定 */ }
                 )
             }
 
             // テーマカスタマイズ
             item {
                 ThemeCustomizationSection(
-                    isDarkMode = uiState.isDarkMode, // 実際のプロパティ名
-                    onThemeChanged = { enabled ->
-                        // 一時的に無効化（関数が存在しない）
-                    }
+                    isDarkMode = uiState.isDarkMode,
+                    onThemeChanged = viewModel::updateDarkMode
                 )
             }
 
             // 言語カスタマイズ
             item {
                 LanguageCustomizationSection(
-                    selectedLanguage = uiState.selectedLanguage, // 実際のプロパティ名
-                    onLanguageChanged = viewModel::updateLanguage // 実際の関数名
+                    selectedLanguage = uiState.selectedLanguage,
+                    onLanguageChanged = { /* TODO: 実装予定 */ }
                 )
             }
 
             // フォントサイズカスタマイズ
             item {
                 FontSizeCustomizationSection(
-                    fontSize = uiState.fontSize, // 実際のプロパティ名
-                    onFontSizeChanged = viewModel::updateFontSize // 実際の関数名
+                    fontSize = uiState.fontSize,
+                    onFontSizeChanged = viewModel::updateFontSize
                 )
             }
 
             // キャラクターカスタマイズ
             item {
                 CharacterCustomizationSection(
-                    showCharacter = uiState.showCharacter, // 実際のプロパティ名
-                    characterVariation = uiState.characterVariation, // 実際のプロパティ名
-                    onShowCharacterChanged = viewModel::updateShowCharacter, // 実際の関数名
-                    onCharacterVariationChanged = viewModel::updateCharacterVariation // 実際の関数名
+                    showCharacter = uiState.showCharacter,
+                    onShowCharacterChanged = { /* TODO: 実装予定 */ }
                 )
             }
 
             // アクセシビリティ設定
             item {
                 AccessibilityCustomizationSection(
-                    highContrast = uiState.highContrast, // 実際のプロパティ名
-                    largeText = uiState.largeText, // 実際のプロパティ名
-                    voiceGuidance = uiState.voiceGuidance, // 実際のプロパティ名
-                    onHighContrastChanged = viewModel::updateHighContrast, // 実際の関数名
-                    onLargeTextChanged = viewModel::updateLargeText, // 実際の関数名
-                    onVoiceGuidanceChanged = viewModel::updateVoiceGuidance // 実際の関数名
+                    highContrast = uiState.highContrast,
+                    largeText = uiState.largeText,
+                    voiceGuidance = uiState.voiceGuidance,
+                    onHighContrastChanged = viewModel::updateHighContrast,
+                    onLargeTextChanged = viewModel::updateLargeText,
+                    onVoiceGuidanceChanged = viewModel::updateVoiceGuidance
                 )
             }
         }
@@ -206,8 +212,8 @@ private fun ThemeCustomizationSection(
  */
 @Composable
 private fun LanguageCustomizationSection(
-    selectedLanguage: String,
-    onLanguageChanged: (String) -> Unit
+    selectedLanguage: LanguageOption,
+    onLanguageChanged: (LanguageOption) -> Unit
 ) {
     Card(
         modifier = Modifier
@@ -224,33 +230,31 @@ private fun LanguageCustomizationSection(
                 modifier = Modifier.padding(bottom = 16.dp)
             )
 
-            val languages = listOf(
-                "ja-JP" to "日本語",
-                "en-US" to "English (US)",
-                "en-GB" to "English (UK)",
-                "ko-KR" to "한국어",
-                "zh-CN" to "中文 (简体)",
-                "zh-TW" to "中文 (繁體)"
-            )
-
-            languages.forEach { (code, displayName) ->
+            LanguageOption.values().forEach { languageOption ->
                 Row(
                     modifier = Modifier
                         .fillMaxWidth()
                         .selectable(
-                            selected = selectedLanguage == code,
-                            onClick = { onLanguageChanged(code) }
+                            selected = selectedLanguage == languageOption,
+                            onClick = { onLanguageChanged(languageOption) }
                         )
                         .padding(vertical = 4.dp),
                     verticalAlignment = Alignment.CenterVertically
                 ) {
                     RadioButton(
-                        selected = selectedLanguage == code,
-                        onClick = { onLanguageChanged(code) }
+                        selected = selectedLanguage == languageOption,
+                        onClick = { onLanguageChanged(languageOption) }
                     )
                     Spacer(modifier = Modifier.width(8.dp))
                     Text(
-                        text = displayName,
+                        text = when (languageOption) {
+                            LanguageOption.JAPANESE -> "日本語"
+                            LanguageOption.ENGLISH_US -> "English (US)"
+                            LanguageOption.ENGLISH_UK -> "English (UK)"
+                            LanguageOption.KOREAN -> "한국어"
+                            LanguageOption.CHINESE_SIMPLIFIED -> "中文 (简体)"
+                            LanguageOption.CHINESE_TRADITIONAL -> "中文 (繁體)"
+                        },
                         style = MaterialTheme.typography.bodyMedium
                     )
                 }
@@ -318,9 +322,7 @@ private fun FontSizeCustomizationSection(
 @Composable
 private fun CharacterCustomizationSection(
     showCharacter: Boolean,
-    characterVariation: String,
-    onShowCharacterChanged: (Boolean) -> Unit,
-    onCharacterVariationChanged: (String) -> Unit
+    onShowCharacterChanged: (Boolean) -> Unit
 ) {
     Card(
         modifier = Modifier
@@ -350,40 +352,6 @@ private fun CharacterCustomizationSection(
                     checked = showCharacter,
                     onCheckedChange = onShowCharacterChanged
                 )
-            }
-
-            if (showCharacter) {
-                Spacer(modifier = Modifier.height(16.dp))
-
-                Text(
-                    text = "バリエーション",
-                    style = MaterialTheme.typography.bodyMedium,
-                    modifier = Modifier.padding(bottom = 8.dp)
-                )
-
-                val variations = listOf("標準", "季節限定", "お出かけ", "おうち")
-                variations.forEach { variation ->
-                    Row(
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .selectable(
-                                selected = characterVariation == variation,
-                                onClick = { onCharacterVariationChanged(variation) }
-                            )
-                            .padding(vertical = 4.dp),
-                        verticalAlignment = Alignment.CenterVertically
-                    ) {
-                        RadioButton(
-                            selected = characterVariation == variation,
-                            onClick = { onCharacterVariationChanged(variation) }
-                        )
-                        Spacer(modifier = Modifier.width(8.dp))
-                        Text(
-                            text = variation,
-                            style = MaterialTheme.typography.bodyMedium
-                        )
-                    }
-                }
             }
         }
     }
