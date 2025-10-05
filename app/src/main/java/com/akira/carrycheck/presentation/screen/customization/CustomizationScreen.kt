@@ -60,7 +60,7 @@ fun CustomizationScreen(
             item {
                 BackgroundCustomizationSection(
                     selectedSeason = uiState.selectedSeason,
-                    onSeasonChanged = { /* TODO: 実装予定 */ }
+                    onSeasonChanged = { /* TODO: ViewModelに関数を追加予定 */ }
                 )
             }
 
@@ -68,7 +68,7 @@ fun CustomizationScreen(
             item {
                 ThemeCustomizationSection(
                     isDarkMode = uiState.isDarkMode,
-                    onThemeChanged = viewModel::updateDarkMode
+                    onThemeChanged = { /* TODO: ViewModelに関数を追加予定 */ }
                 )
             }
 
@@ -76,7 +76,7 @@ fun CustomizationScreen(
             item {
                 LanguageCustomizationSection(
                     selectedLanguage = uiState.selectedLanguage,
-                    onLanguageChanged = { /* TODO: 実装予定 */ }
+                    onLanguageChanged = { /* TODO: ViewModelに関数を追加予定 */ }
                 )
             }
 
@@ -92,19 +92,19 @@ fun CustomizationScreen(
             item {
                 CharacterCustomizationSection(
                     showCharacter = uiState.showCharacter,
-                    onShowCharacterChanged = { /* TODO: 実装予定 */ }
+                    onShowCharacterChanged = { /* TODO: ViewModelに関数を追加予定 */ }
                 )
             }
 
-            // アクセシビリティ設定
+            // アクセシビリティ設定（一時的に固定値使用）
             item {
                 AccessibilityCustomizationSection(
-                    highContrast = uiState.highContrast,
-                    largeText = uiState.largeText,
-                    voiceGuidance = uiState.voiceGuidance,
-                    onHighContrastChanged = viewModel::updateHighContrast,
-                    onLargeTextChanged = viewModel::updateLargeText,
-                    onVoiceGuidanceChanged = viewModel::updateVoiceGuidance
+                    highContrast = false, // 一時的に固定値
+                    largeText = false, // 一時的に固定値
+                    voiceGuidance = false, // 一時的に固定値
+                    onHighContrastChanged = { /* TODO: ViewModelに実装予定 */ },
+                    onLargeTextChanged = { /* TODO: ViewModelに実装予定 */ },
+                    onVoiceGuidanceChanged = { /* TODO: ViewModelに実装予定 */ }
                 )
             }
         }
@@ -384,59 +384,11 @@ private fun AccessibilityCustomizationSection(
                 modifier = Modifier.padding(bottom = 16.dp)
             )
 
-            // ハイコントラスト
-            Row(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(vertical = 4.dp),
-                horizontalArrangement = Arrangement.SpaceBetween,
-                verticalAlignment = Alignment.CenterVertically
-            ) {
-                Text(
-                    text = "ハイコントラスト",
-                    style = MaterialTheme.typography.bodyMedium
-                )
-                Switch(
-                    checked = highContrast,
-                    onCheckedChange = onHighContrastChanged
-                )
-            }
-
-            // 大きな文字
-            Row(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(vertical = 4.dp),
-                horizontalArrangement = Arrangement.SpaceBetween,
-                verticalAlignment = Alignment.CenterVertically
-            ) {
-                Text(
-                    text = "大きな文字",
-                    style = MaterialTheme.typography.bodyMedium
-                )
-                Switch(
-                    checked = largeText,
-                    onCheckedChange = onLargeTextChanged
-                )
-            }
-
-            // 音声ガイダンス
-            Row(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(vertical = 4.dp),
-                horizontalArrangement = Arrangement.SpaceBetween,
-                verticalAlignment = Alignment.CenterVertically
-            ) {
-                Text(
-                    text = "音声ガイダンス",
-                    style = MaterialTheme.typography.bodyMedium
-                )
-                Switch(
-                    checked = voiceGuidance,
-                    onCheckedChange = onVoiceGuidanceChanged
-                )
-            }
+            Text(
+                text = "※ アクセシビリティ機能は今後のアップデートで実装予定です",
+                style = MaterialTheme.typography.bodySmall,
+                color = MaterialTheme.colorScheme.onSurfaceVariant
+            )
         }
     }
 }

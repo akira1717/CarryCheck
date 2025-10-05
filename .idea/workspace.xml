@@ -31,7 +31,7 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3f92d013-e77f-49a3-8df2-dded40157172" name="変更" comment="CustomizationScreen.kt ViewModelの実際の定義">
+    <list default="true" id="3f92d013-e77f-49a3-8df2-dded40157172" name="変更" comment="CustomizationViewModelの実際のUIState">
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/akira/carrycheck/presentation/screen/customization/CustomizationScreen.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/akira/carrycheck/presentation/screen/customization/CustomizationScreen.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -80,6 +80,19 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <excluded-from-favorite>
+      <branch-storage>
+        <map>
+          <entry type="LOCAL">
+            <value>
+              <list>
+                <branch-info repo="$PROJECT_DIR$" source="master" />
+              </list>
+            </value>
+          </entry>
+        </map>
+      </branch-storage>
+    </excluded-from-favorite>
     <option name="PREVIEW_PUSH_PROTECTED_ONLY" value="true" />
     <option name="PUSH_AUTO_UPDATE" value="true" />
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -641,7 +654,15 @@
       <option name="project" value="LOCAL" />
       <updated>1759691119764</updated>
     </task>
-    <option name="localTasksCounter" value="45" />
+    <task id="LOCAL-00045" summary="CustomizationViewModelの実際のUIState">
+      <option name="closed" value="true" />
+      <created>1759691423556</created>
+      <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL-00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1759691423556</updated>
+    </task>
+    <option name="localTasksCounter" value="46" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -656,7 +677,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Add VoiceSettingRepository.kt - 音声設定リポジトリ実装" />
     <MESSAGE value="Add Constants.kt - アプリ全体定数定義実装" />
     <MESSAGE value="Add VoiceRecognitionUtil.kt - 音声認識ユーティリティ実装" />
     <MESSAGE value="Add TextToSpeechUtil.kt - 音声読み上げユーティリティ実装" />
@@ -681,7 +701,8 @@
     <MESSAGE value="CustomizationScreen.ktを修正後" />
     <MESSAGE value="CustomizationScreen.kt ViewModelの実際の関数名" />
     <MESSAGE value="CustomizationScreen.kt ViewModelの実際の定義" />
-    <option name="LAST_COMMIT_MESSAGE" value="CustomizationScreen.kt ViewModelの実際の定義" />
+    <MESSAGE value="CustomizationViewModelの実際のUIState" />
+    <option name="LAST_COMMIT_MESSAGE" value="CustomizationViewModelの実際のUIState" />
   </component>
   <component name="play_dynamic_filters_status">
     <option name="appIdToCheckInfo">
