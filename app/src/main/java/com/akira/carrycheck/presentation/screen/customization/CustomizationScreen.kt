@@ -49,7 +49,7 @@ fun CustomizationScreen(
             item {
                 BackgroundCustomizationSection(
                     selectedSeason = uiState.selectedSeason,
-                    onSeasonChanged = viewModel::updateSeason
+                    onSeasonChanged = viewModel::setSelectedSeason // updateSeason → setSelectedSeason
                 )
             }
 
@@ -57,7 +57,7 @@ fun CustomizationScreen(
             item {
                 ThemeCustomizationSection(
                     isDarkMode = uiState.isDarkMode,
-                    onThemeChanged = viewModel::updateTheme
+                    onThemeChanged = viewModel::setDarkMode // updateTheme → setDarkMode
                 )
             }
 
@@ -65,7 +65,7 @@ fun CustomizationScreen(
             item {
                 LanguageCustomizationSection(
                     selectedLanguage = uiState.selectedLanguage,
-                    onLanguageChanged = viewModel::updateLanguage
+                    onLanguageChanged = viewModel::setSelectedLanguage // updateLanguage → setSelectedLanguage
                 )
             }
 
@@ -73,7 +73,7 @@ fun CustomizationScreen(
             item {
                 FontSizeCustomizationSection(
                     fontSize = uiState.fontSize,
-                    onFontSizeChanged = viewModel::updateFontSize
+                    onFontSizeChanged = viewModel::setFontSize // updateFontSize → setFontSize
                 )
             }
 
@@ -82,8 +82,8 @@ fun CustomizationScreen(
                 CharacterCustomizationSection(
                     showCharacter = uiState.showCharacter,
                     characterVariation = uiState.characterVariation,
-                    onShowCharacterChanged = viewModel::updateShowCharacter,
-                    onCharacterVariationChanged = viewModel::updateCharacterVariation
+                    onShowCharacterChanged = viewModel::setShowCharacter, // updateShowCharacter → setShowCharacter
+                    onCharacterVariationChanged = viewModel::setCharacterVariation // updateCharacterVariation → setCharacterVariation
                 )
             }
 
@@ -93,9 +93,9 @@ fun CustomizationScreen(
                     highContrast = uiState.highContrast,
                     largeText = uiState.largeText,
                     voiceGuidance = uiState.voiceGuidance,
-                    onHighContrastChanged = viewModel::updateHighContrast,
-                    onLargeTextChanged = viewModel::updateLargeText,
-                    onVoiceGuidanceChanged = viewModel::updateVoiceGuidance
+                    onHighContrastChanged = viewModel::setHighContrast, // updateHighContrast → setHighContrast
+                    onLargeTextChanged = viewModel::setLargeText, // updateLargeText → setLargeText
+                    onVoiceGuidanceChanged = viewModel::setVoiceGuidance // updateVoiceGuidance → setVoiceGuidance
                 )
             }
         }
@@ -203,8 +203,8 @@ private fun ThemeCustomizationSection(
  */
 @Composable
 private fun LanguageCustomizationSection(
-    selectedLanguage: LanguageOption,
-    onLanguageChanged: (LanguageOption) -> Unit
+    selectedLanguage: String, // LanguageOption → String に変更
+    onLanguageChanged: (String) -> Unit // LanguageOption → String に変更
 ) {
     Card(
         modifier = Modifier
@@ -221,31 +221,33 @@ private fun LanguageCustomizationSection(
                 modifier = Modifier.padding(bottom = 16.dp)
             )
 
-            LanguageOption.values().forEach { languageOption ->
+            val languages = listOf(
+                "ja-JP" to "日本語",
+                "en-US" to "English (US)",
+                "en-GB" to "English (UK)",
+                "ko-KR" to "한국어",
+                "zh-CN" to "中文 (简体)",
+                "zh-TW" to "中文 (繁體)"
+            )
+
+            languages.forEach { (code, displayName) ->
                 Row(
                     modifier = Modifier
                         .fillMaxWidth()
                         .selectable(
-                            selected = selectedLanguage == languageOption,
-                            onClick = { onLanguageChanged(languageOption) }
+                            selected = selectedLanguage == code,
+                            onClick = { onLanguageChanged(code) }
                         )
                         .padding(vertical = 4.dp),
                     verticalAlignment = Alignment.CenterVertically
                 ) {
                     RadioButton(
-                        selected = selectedLanguage == languageOption,
-                        onClick = { onLanguageChanged(languageOption) }
+                        selected = selectedLanguage == code,
+                        onClick = { onLanguageChanged(code) }
                     )
                     Spacer(modifier = Modifier.width(8.dp))
                     Text(
-                        text = when (languageOption) {
-                            LanguageOption.JAPANESE -> "日本語"
-                            LanguageOption.ENGLISH_US -> "English (US)"
-                            LanguageOption.ENGLISH_UK -> "English (UK)"
-                            LanguageOption.KOREAN -> "한국어"
-                            LanguageOption.CHINESE_SIMPLIFIED -> "中文 (简体)"
-                            LanguageOption.CHINESE_TRADITIONAL -> "中文 (繁體)"
-                        },
+                        text = displayName,
                         style = MaterialTheme.typography.bodyMedium
                     )
                 }
@@ -466,16 +468,4 @@ private fun AccessibilityCustomizationSection(
             }
         }
     }
-}
-
-/**
- * 言語オプション列挙型
- */
-enum class LanguageOption {
-    JAPANESE,
-    ENGLISH_US,
-    ENGLISH_UK,
-    KOREAN,
-    CHINESE_SIMPLIFIED,
-    CHINESE_TRADITIONAL
 }
