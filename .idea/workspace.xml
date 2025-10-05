@@ -31,8 +31,7 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3f92d013-e77f-49a3-8df2-dded40157172" name="変更" comment="CustomizationScreen.ktを修正後">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="3f92d013-e77f-49a3-8df2-dded40157172" name="変更" comment="CustomizationScreen.kt ViewModelの実際の関数名">
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/akira/carrycheck/presentation/screen/customization/CustomizationScreen.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/akira/carrycheck/presentation/screen/customization/CustomizationScreen.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -626,7 +625,15 @@
       <option name="project" value="LOCAL" />
       <updated>1759690529362</updated>
     </task>
-    <option name="localTasksCounter" value="43" />
+    <task id="LOCAL-00043" summary="CustomizationScreen.kt ViewModelの実際の関数名">
+      <option name="closed" value="true" />
+      <created>1759690878540</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1759690878540</updated>
+    </task>
+    <option name="localTasksCounter" value="44" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -641,7 +648,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Add ItemRepository.kt - チェックリストアイテムリポジトリ実装" />
     <MESSAGE value="Fix ItemRepository.kt - DI削除でエラー解決" />
     <MESSAGE value="Add VoiceSettingRepository.kt - 音声設定リポジトリ実装" />
     <MESSAGE value="Add Constants.kt - アプリ全体定数定義実装" />
@@ -666,7 +672,8 @@
     <MESSAGE value="CustomizationScreen.ktを全部のコードをコピー＆ペーストした後" />
     <MESSAGE value="CustomizationScreen.ktの関数呼び出し名を修正後" />
     <MESSAGE value="CustomizationScreen.ktを修正後" />
-    <option name="LAST_COMMIT_MESSAGE" value="CustomizationScreen.ktを修正後" />
+    <MESSAGE value="CustomizationScreen.kt ViewModelの実際の関数名" />
+    <option name="LAST_COMMIT_MESSAGE" value="CustomizationScreen.kt ViewModelの実際の関数名" />
   </component>
   <component name="play_dynamic_filters_status">
     <option name="appIdToCheckInfo">
