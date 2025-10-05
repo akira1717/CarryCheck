@@ -11,6 +11,7 @@ package com.akira.carrycheck.data.model
  * @property priority 優先度（1:高、2:中、3:低）
  * @property createdAt 作成日時
  * @property updatedAt 更新日時
+ * @property isImportant 緊急モード用重要フラグ（v3.0拡張）
  */
 data class ChecklistItem(
     val id: Long = 0L,
@@ -20,5 +21,6 @@ data class ChecklistItem(
     val isChecked: Boolean = false,
     val priority: Int = 2, // デフォルトは中優先度
     val createdAt: Long = System.currentTimeMillis(),
-    val updatedAt: Long = System.currentTimeMillis()
+    val updatedAt: Long = System.currentTimeMillis(),
+    val isImportant: Boolean = false // 緊急モード用重要フラグ
 )
