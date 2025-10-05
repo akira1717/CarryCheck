@@ -12,14 +12,16 @@ import com.akira.carrycheck.data.model.VoiceSetting
 data class VoiceSettingEntity(
     @PrimaryKey(autoGenerate = true)
     val id: Long = 0,
-    val recognitionSensitivity: Float = 0.7f,    // 音声認識感度 (0.0-1.0)
-    val speechRate: Float = 1.0f,                // 読み上げ速度 (0.5-2.0)
-    val speechPitch: Float = 1.0f,               // 読み上げピッチ (0.5-2.0)
-    val language: String = "ja-JP",              // 言語設定
-    val isVoiceFeedbackEnabled: Boolean = true,  // 音声フィードバック有効
-    val timeoutDuration: Long = 5000L,           // 音声認識タイムアウト (ms)
-    val practiceMode: Boolean = false,           // 練習モード
-    val emergencyModeEnabled: Boolean = true     // 緊急モード対応
+    val userId: String = "", // ユーザーID
+    val isVoiceRecognitionEnabled: Boolean = true, // 音声認識有効
+    val voiceRecognitionLanguage: String = "ja-JP", // 音声認識言語
+    val maxRecognitionAttempts: Int = 3, // 最大認識試行回数
+    val isTtsEnabled: Boolean = true, // TTS（読み上げ）有効
+    val ttsLanguage: String = "ja-JP", // TTS言語
+    val ttsSpeed: Float = 1.0f, // TTS速度 (0.5-2.0)
+    val ttsPitch: Float = 1.0f, // TTSピッチ (0.5-2.0)
+    val createdAt: Long = System.currentTimeMillis(), // 作成日時
+    val updatedAt: Long = System.currentTimeMillis() // 更新日時
 )
 
 /**
@@ -28,14 +30,16 @@ data class VoiceSettingEntity(
 fun VoiceSettingEntity.toDomain(): VoiceSetting {
     return VoiceSetting(
         id = id,
-        recognitionSensitivity = recognitionSensitivity,
-        speechRate = speechRate,
-        speechPitch = speechPitch,
-        language = language,
-        isVoiceFeedbackEnabled = isVoiceFeedbackEnabled,
-        timeoutDuration = timeoutDuration,
-        practiceMode = practiceMode,
-        emergencyModeEnabled = emergencyModeEnabled
+        userId = userId,
+        isVoiceRecognitionEnabled = isVoiceRecognitionEnabled,
+        voiceRecognitionLanguage = voiceRecognitionLanguage,
+        maxRecognitionAttempts = maxRecognitionAttempts,
+        isTtsEnabled = isTtsEnabled,
+        ttsLanguage = ttsLanguage,
+        ttsSpeed = ttsSpeed,
+        ttsPitch = ttsPitch,
+        createdAt = createdAt,
+        updatedAt = updatedAt
     )
 }
 
@@ -45,13 +49,15 @@ fun VoiceSettingEntity.toDomain(): VoiceSetting {
 fun VoiceSetting.toEntity(): VoiceSettingEntity {
     return VoiceSettingEntity(
         id = id,
-        recognitionSensitivity = recognitionSensitivity,
-        speechRate = speechRate,
-        speechPitch = speechPitch,
-        language = language,
-        isVoiceFeedbackEnabled = isVoiceFeedbackEnabled,
-        timeoutDuration = timeoutDuration,
-        practiceMode = practiceMode,
-        emergencyModeEnabled = emergencyModeEnabled
+        userId = userId,
+        isVoiceRecognitionEnabled = isVoiceRecognitionEnabled,
+        voiceRecognitionLanguage = voiceRecognitionLanguage,
+        maxRecognitionAttempts = maxRecognitionAttempts,
+        isTtsEnabled = isTtsEnabled,
+        ttsLanguage = ttsLanguage,
+        ttsSpeed = ttsSpeed,
+        ttsPitch = ttsPitch,
+        createdAt = createdAt,
+        updatedAt = updatedAt
     )
 }

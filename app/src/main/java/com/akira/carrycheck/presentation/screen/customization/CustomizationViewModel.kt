@@ -7,7 +7,7 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 import com.akira.carrycheck.data.model.Season
-import com.akira.carrycheck.utils.TextToSpeechUtil
+import com.akira.carrycheck.util.TextToSpeechUtil
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 import java.util.*

@@ -8,8 +8,8 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 import com.akira.carrycheck.data.model.VoiceSetting
 import com.akira.carrycheck.data.repository.VoiceSettingRepository
-import com.akira.carrycheck.utils.VoiceRecognitionUtil
-import com.akira.carrycheck.utils.TextToSpeechUtil
+import com.akira.carrycheck.util.VoiceRecognitionUtil
+import com.akira.carrycheck.util.TextToSpeechUtil
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 

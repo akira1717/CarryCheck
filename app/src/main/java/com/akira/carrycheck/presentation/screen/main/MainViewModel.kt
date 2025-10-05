@@ -9,8 +9,8 @@ import kotlinx.coroutines.launch
 import com.akira.carrycheck.data.model.ChecklistItem
 import com.akira.carrycheck.data.model.Season
 import com.akira.carrycheck.data.repository.ItemRepository
-import com.akira.carrycheck.utils.VoiceRecognitionUtil
-import com.akira.carrycheck.utils.TextToSpeechUtil
+import com.akira.carrycheck.util.VoiceRecognitionUtil
+import com.akira.carrycheck.util.TextToSpeechUtil
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 import java.util.*
