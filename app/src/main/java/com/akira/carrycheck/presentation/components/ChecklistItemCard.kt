@@ -1,6 +1,7 @@
 package com.akira.carrycheck.presentation.components
 
-import androidx.compose.animation.*
+import androidx.compose.animation.core.animateFloatAsState
+import androidx.compose.animation.core.tween
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
@@ -15,6 +16,7 @@ import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.unit.dp
 import com.akira.carrycheck.data.model.ChecklistItem
 import com.akira.carrycheck.data.model.Season
+
 
 /**
  * CarryCheck v3.0 チェックリストアイテムカード
