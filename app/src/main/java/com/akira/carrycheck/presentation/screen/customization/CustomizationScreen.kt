@@ -45,11 +45,11 @@ fun CustomizationScreen(
                 .padding(paddingValues),
             verticalArrangement = Arrangement.spacedBy(8.dp)
         ) {
-            // 背景カスタマイズ
+            // 背景カスタマイズ（Season選択は一時的に固定値使用）
             item {
                 BackgroundCustomizationSection(
-                    selectedSeason = uiState.selectedSeason,
-                    onSeasonChanged = viewModel::setSelectedSeason // updateSeason → setSelectedSeason
+                    selectedSeason = Season.SPRING, // 一時的に固定値
+                    onSeasonChanged = { /* TODO: Season更新機能を実装 */ }
                 )
             }
 
@@ -57,7 +57,7 @@ fun CustomizationScreen(
             item {
                 ThemeCustomizationSection(
                     isDarkMode = uiState.isDarkMode,
-                    onThemeChanged = viewModel::setDarkMode // updateTheme → setDarkMode
+                    onThemeChanged = viewModel::updateDarkMode // 正しい関数名
                 )
             }
 
@@ -65,7 +65,7 @@ fun CustomizationScreen(
             item {
                 LanguageCustomizationSection(
                     selectedLanguage = uiState.selectedLanguage,
-                    onLanguageChanged = viewModel::setSelectedLanguage // updateLanguage → setSelectedLanguage
+                    onLanguageChanged = viewModel::updateLanguage // 正しい関数名
                 )
             }
 
@@ -73,7 +73,7 @@ fun CustomizationScreen(
             item {
                 FontSizeCustomizationSection(
                     fontSize = uiState.fontSize,
-                    onFontSizeChanged = viewModel::setFontSize // updateFontSize → setFontSize
+                    onFontSizeChanged = viewModel::updateFontSize // 正しい関数名
                 )
             }
 
@@ -82,8 +82,8 @@ fun CustomizationScreen(
                 CharacterCustomizationSection(
                     showCharacter = uiState.showCharacter,
                     characterVariation = uiState.characterVariation,
-                    onShowCharacterChanged = viewModel::setShowCharacter, // updateShowCharacter → setShowCharacter
-                    onCharacterVariationChanged = viewModel::setCharacterVariation // updateCharacterVariation → setCharacterVariation
+                    onShowCharacterChanged = viewModel::updateShowCharacter, // 正しい関数名
+                    onCharacterVariationChanged = viewModel::updateCharacterVariation // 正しい関数名
                 )
             }
 
@@ -93,9 +93,9 @@ fun CustomizationScreen(
                     highContrast = uiState.highContrast,
                     largeText = uiState.largeText,
                     voiceGuidance = uiState.voiceGuidance,
-                    onHighContrastChanged = viewModel::setHighContrast, // updateHighContrast → setHighContrast
-                    onLargeTextChanged = viewModel::setLargeText, // updateLargeText → setLargeText
-                    onVoiceGuidanceChanged = viewModel::setVoiceGuidance // updateVoiceGuidance → setVoiceGuidance
+                    onHighContrastChanged = viewModel::updateHighContrast, // 正しい関数名
+                    onLargeTextChanged = viewModel::updateLargeText, // 正しい関数名
+                    onVoiceGuidanceChanged = viewModel::updateVoiceGuidance // 正しい関数名
                 )
             }
         }
@@ -203,8 +203,8 @@ private fun ThemeCustomizationSection(
  */
 @Composable
 private fun LanguageCustomizationSection(
-    selectedLanguage: String, // LanguageOption → String に変更
-    onLanguageChanged: (String) -> Unit // LanguageOption → String に変更
+    selectedLanguage: String,
+    onLanguageChanged: (String) -> Unit
 ) {
     Card(
         modifier = Modifier
