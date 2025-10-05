@@ -6,6 +6,10 @@ import androidx.room.RoomDatabase
 import androidx.room.migration.Migration
 import androidx.sqlite.db.SupportSQLiteDatabase
 import android.content.Context
+import com.akira.carrycheck.data.entity.ChecklistItemEntity
+import com.akira.carrycheck.data.entity.VoiceSettingEntity
+import com.akira.carrycheck.data.dao.ChecklistItemDao
+import com.akira.carrycheck.data.dao.VoiceSettingDao
 
 /**
  * CarryCheck v3.0 メインデータベース
@@ -16,7 +20,7 @@ import android.content.Context
         ChecklistItemEntity::class,
         VoiceSettingEntity::class
     ],
-    version = 2, // Phase2でバージョンアップ
+    version = 2,
     exportSchema = false
 )
 abstract class AppDatabase : RoomDatabase() {
@@ -37,7 +41,7 @@ abstract class AppDatabase : RoomDatabase() {
                     AppDatabase::class.java,
                     DATABASE_NAME
                 )
-                    .addMigrations(MIGRATION_1_2) // マイグレーション追加
+                    .addMigrations(MIGRATION_1_2)
                     .build()
                 INSTANCE = instance
                 instance
@@ -53,50 +57,38 @@ abstract class AppDatabase : RoomDatabase() {
             override fun migrate(database: SupportSQLiteDatabase) {
                 // 1. checklist_itemsテーブルにisImportantカラム追加
                 database.execSQL(
-                    "ALTER TABLE checklist_items ADD COLUMN isImportant INTEGER NOT NULL DEFAULT 0"
+                    "ALTER TABLE checklist_items ADD COLUMN is_important INTEGER NOT NULL DEFAULT 0"
                 )
 
                 // 2. voice_settingsテーブル作成
                 database.execSQL("""
                     CREATE TABLE voice_settings (
                         id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
-                        recognitionSensitivity REAL NOT NULL DEFAULT 0.7,
-                        speechRate REAL NOT NULL DEFAULT 1.0,
-                        speechPitch REAL NOT NULL DEFAULT 1.0,
-                        language TEXT NOT NULL DEFAULT 'ja-JP',
-                        isVoiceFeedbackEnabled INTEGER NOT NULL DEFAULT 1,
-                        timeoutDuration INTEGER NOT NULL DEFAULT 5000,
-                        practiceMode INTEGER NOT NULL DEFAULT 0,
-                        emergencyModeEnabled INTEGER NOT NULL DEFAULT 1
+                        user_id TEXT NOT NULL DEFAULT 'default_user',
+                        is_voice_recognition_enabled INTEGER NOT NULL DEFAULT 1,
+                        voice_recognition_language TEXT NOT NULL DEFAULT 'ja-JP',
+                        max_recognition_attempts INTEGER NOT NULL DEFAULT 3,
+                        is_tts_enabled INTEGER NOT NULL DEFAULT 1,
+                        tts_language TEXT NOT NULL DEFAULT 'ja-JP',
+                        tts_speed REAL NOT NULL DEFAULT 1.0,
+                        tts_pitch REAL NOT NULL DEFAULT 1.0,
+                        created_at INTEGER NOT NULL DEFAULT 0,
+                        updated_at INTEGER NOT NULL DEFAULT 0
                     )
                 """)
 
                 // 3. デフォルト音声設定挿入
                 database.execSQL("""
                     INSERT INTO voice_settings (
-                        recognitionSensitivity, speechRate, speechPitch, language,
-                        isVoiceFeedbackEnabled, timeoutDuration, practiceMode, emergencyModeEnabled
-                    ) VALUES (0.7, 1.0, 1.0, 'ja-JP', 1, 5000, 0, 1)
+                        user_id, is_voice_recognition_enabled, voice_recognition_language,
+                        max_recognition_attempts, is_tts_enabled, tts_language,
+                        tts_speed, tts_pitch, created_at, updated_at
+                    ) VALUES (
+                        'default_user', 1, 'ja-JP', 3, 1, 'ja-JP', 1.0, 1.0, 
+                        ${System.currentTimeMillis()}, ${System.currentTimeMillis()}
+                    )
                 """)
             }
-        }
-
-        /**
-         * データベース初期化（開発・テスト用）
-         */
-        fun recreateDatabase(context: Context): AppDatabase {
-            INSTANCE?.close()
-            context.deleteDatabase(DATABASE_NAME)
-            INSTANCE = null
-            return getDatabase(context)
-        }
-
-        /**
-         * データベースクローズ
-         */
-        fun closeDatabase() {
-            INSTANCE?.close()
-            INSTANCE = null
         }
     }
 }

@@ -3,7 +3,6 @@ package com.akira.carrycheck.data.entity
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import com.akira.carrycheck.data.model.Season
 
 /**
  * チェックリストアイテムのRoomエンティティ
@@ -22,10 +21,13 @@ data class ChecklistItemEntity(
     val category: String,
 
     @ColumnInfo(name = "season")
-    val season: String, // SeasonをStringとして保存
+    val season: String,
 
     @ColumnInfo(name = "is_checked")
     val isChecked: Boolean = false,
+
+    @ColumnInfo(name = "is_important")
+    val isImportant: Boolean = false,
 
     @ColumnInfo(name = "priority")
     val priority: Int = 2,
