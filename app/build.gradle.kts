@@ -66,6 +66,10 @@ dependencies {
     // FontWeight エラー解決用
     implementation("androidx.compose.ui:ui-text")
 
+    // Compose Animation（←これを追加）
+    implementation("androidx.compose.animation:animation")
+    implementation("androidx.compose.animation:animation-core")
+
     // Navigation
     implementation("androidx.navigation:navigation-compose:2.7.6")
 
