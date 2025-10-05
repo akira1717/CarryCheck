@@ -70,6 +70,10 @@ dependencies {
     implementation("androidx.compose.animation:animation:1.5.15")
     implementation("androidx.compose.animation:animation-core:1.5.15")
 
+    // Material Icons Extended（この行を追加）
+    implementation("androidx.compose.material:material-icons-extended")
+
+
 
 
 
