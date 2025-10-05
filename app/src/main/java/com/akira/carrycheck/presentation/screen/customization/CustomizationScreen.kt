@@ -397,5 +397,58 @@ private fun getSeasonEmoji(season: Season): String {
         Season.WINTER -> "❄️"
     }
 }
+/**
+ * 言語カスタマイズセクション
+ */
+@Composable
+private fun LanguageCustomizationSection(
+    selectedLanguage: String,
+    onLanguageChanged: (String) -> Unit
+) {
+    Card(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(horizontal = 16.dp, vertical = 8.dp),
+        elevation = CardDefaults.cardElevation(defaultElevation = 4.dp)
+    ) {
+        Column(
+            modifier = Modifier.padding(16.dp)
+        ) {
+            Text(
+                text = "言語設定",
+                style = MaterialTheme.typography.titleMedium,
+                modifier = Modifier.padding(bottom = 16.dp)
+            )
+
+            val languages = listOf(
+                "ja-JP" to "日本語",
+                "en-US" to "English (US)",
+                "en-GB" to "English (UK)",
+                "ko-KR" to "한국어",
+                "zh-CN" to "中文 (简体)",
+                "zh-TW" to "中文 (繁體)"
+            )
+
+            languages.forEach { (code, name) ->
+                Row(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(vertical = 4.dp),
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    RadioButton(
+                        selected = selectedLanguage == code,
+                        onClick = { onLanguageChanged(code) }
+                    )
+                    Spacer(modifier = Modifier.width(8.dp))
+                    Text(
+                        text = name,
+                        style = MaterialTheme.typography.bodyMedium
+                    )
+                }
+            }
+        }
+    }
+}
 
 // 残りのセクション（Language, Font, Character, Accessibility, Preview）とenumは次のファイルで定義予定
