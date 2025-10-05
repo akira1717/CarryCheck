@@ -31,7 +31,7 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3f92d013-e77f-49a3-8df2-dded40157172" name="変更" comment="app/build.gradle.ktsにMaterial Icons Extended依存関係を追加後">
+    <list default="true" id="3f92d013-e77f-49a3-8df2-dded40157172" name="変更" comment="Step 1: CustomizationScreen.ktにLanguageCustomizationSection関数を追加を実行">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/akira/carrycheck/presentation/screen/customization/CustomizationScreen.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/akira/carrycheck/presentation/screen/customization/CustomizationScreen.kt" afterDir="false" />
     </list>
@@ -586,7 +586,15 @@
       <option name="project" value="LOCAL" />
       <updated>1759688661757</updated>
     </task>
-    <option name="localTasksCounter" value="38" />
+    <task id="LOCAL-00038" summary="Step 1: CustomizationScreen.ktにLanguageCustomizationSection関数を追加を実行">
+      <option name="closed" value="true" />
+      <created>1759689175047</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1759689175047</updated>
+    </task>
+    <option name="localTasksCounter" value="39" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -601,7 +609,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Add VoiceSettingEntity.kt - 音声設定Roomエンティティ実装" />
     <MESSAGE value="Add ChecklistItemDao.kt - チェックリストアイテムDAO実装" />
     <MESSAGE value="Add VoiceSettingDao.kt - 音声設定DAO実装" />
     <MESSAGE value="Add AppDatabase.kt - Roomデータベース定義実装" />
@@ -626,7 +633,8 @@
     <MESSAGE value="ChecklistItemCard.ktファイルを修正後" />
     <MESSAGE value="ChecklistItemCard.ktファイルの197行目周辺を修正" />
     <MESSAGE value="app/build.gradle.ktsにMaterial Icons Extended依存関係を追加後" />
-    <option name="LAST_COMMIT_MESSAGE" value="app/build.gradle.ktsにMaterial Icons Extended依存関係を追加後" />
+    <MESSAGE value="Step 1: CustomizationScreen.ktにLanguageCustomizationSection関数を追加を実行" />
+    <option name="LAST_COMMIT_MESSAGE" value="Step 1: CustomizationScreen.ktにLanguageCustomizationSection関数を追加を実行" />
   </component>
   <component name="play_dynamic_filters_status">
     <option name="appIdToCheckInfo">
